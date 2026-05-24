@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalysto | Explore Solutions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ======================================================
+EDIT COLORS HERE
+====================================================== */
+
+:root{
+  --bg:#000000;
+  --bg2:#0D0D0D;
+  --card:#111111;
+  --border:rgba(255,255,255,0.08);
+  --text:#F7F7F7;
+  --muted:#AAB4C0;
+  --accent:#FF5F1F;
+  --accent-soft:#ff8c57;
+}
+
+/* ======================================================
+GLOBAL
+====================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:1400px;
+  margin:auto;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+section{
+  padding:90px 0;
+}
+
+/* ======================================================
+NAVBAR — matched to v3
+====================================================== */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(7,17,31,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 0;
+}
+
+.logo img{
+  height:54px;
+}
+
+.nav-links{
+  display:flex;
+  gap:36px;
+}
+
+.nav-links a{
+  color:#dbe2ea;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  transition:0.3s ease;
+}
+
+.nav-links a:hover{
+  color:var(--accent);
+}
+
+.primary-btn{
+  background:var(--accent);
+  color:#111;
+  padding:15px 28px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s ease;
+  box-shadow:0 10px 30px rgba(255,95,31,0.22);
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* ======================================================
+HERO — copied exactly from homepage v3
+====================================================== */
+
+.hero{
+  position:relative;
+  min-height:920px;
+  overflow:visible;        /* same as homepage — prevents stat card clipping */
+  padding-top:120px;
+  isolation:isolate;       /* correct stacking context, same as homepage */
+}
+
+/* Background image sits in its own clipping wrapper — same as homepage */
+.hero-bg-clip{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+}
+
+/* ======================================================
+CHANGE HERO IMAGE HERE — replace the src in the HTML below
+====================================================== */
+
+.hero-bg-clip img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:zoomHero 18s ease-in-out infinite alternate;
+}
+
+@keyframes zoomHero{
+  from{ transform:scale(1); }
+  to{ transform:scale(1.05); }
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(to right,
+    rgba(5,10,20,0.94) 20%,
+    rgba(5,10,20,0.75) 48%,
+    rgba(5,10,20,0.42));
+}
+
+/* Exact match to homepage .hero-content */
+.hero-content{
+  position:relative;
+  z-index:2;
+  min-height:760px;
+  display:flex;
+  align-items:center;
+}
+
+/* Exact match to homepage .hero-left */
+.hero-left{
+  width:58%;
+}
+
+.hero-tag{
+  color:var(--accent);
+  font-size:14px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+  font-weight:600;
+}
+
+.hero-left h1{
+  font-size:86px;
+  line-height:0.94;
+  letter-spacing:-5px;
+  font-weight:800;
+  max-width:820px;
+  margin-bottom:34px;
+}
+
+.hero-left h1 span{
+  color:var(--accent);
+}
+
+.hero-left p{
+  font-size:20px;
+  line-height:1.9;
+  color:#C0C8D2;
+  max-width:700px;
+  margin-bottom:42px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+}
+
+.secondary-btn{
+  border:1px solid rgba(255,255,255,0.15);
+  color:white;
+  text-decoration:none;
+  padding:15px 28px;
+  border-radius:12px;
+  transition:0.3s ease;
+  background:rgba(255,255,255,0.03);
+}
+
+.secondary-btn:hover{
+  background:white;
+  color:black;
+  transform:translateY(-3px);
+}
+
+/* ======================================================
+CHALLENGES SECTION
+====================================================== */
+
+.challenge-panel{
+  background:linear-gradient(145deg,#101A29,#0D1522);
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:50px;
+}
+
+.challenge-title{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:50px;
+}
+
+.challenge-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:24px;
+  text-align:center;
+}
+
+.challenge-item{
+  border-right:1px solid rgba(255,255,255,0.05);
+  padding:0 14px;
+}
+
+.challenge-item:last-child{
+  border-right:none;
+}
+
+.challenge-icon{
+  font-size:28px;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+
+.challenge-item h4{
+  font-size:16px;
+  line-height:1.5;
+}
+
+.challenge-bottom{
+  text-align:center;
+  margin-top:40px;
+  color:#AAB4C0;
+  line-height:1.9;
+}
+
+.challenge-bottom span{
+  color:var(--accent);
+}
+
+/* ======================================================
+SOLUTION CARDS
+====================================================== */
+
+.solution-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:30px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  margin-bottom:40px;
+  box-shadow:0 30px 70px rgba(0,0,0,0.35);
+  transition:0.35s ease;
+}
+
+.solution-card:hover{
+  border-color:rgba(255,95,31,0.22);
+  transform:translateY(-4px);
+}
+
+.solution-content{
+  padding:60px;
+}
+
+.solution-number{
+  color:var(--accent);
+  margin-bottom:20px;
+  font-weight:700;
+}
+
+.solution-content h2{
+  font-size:64px;
+  line-height:0.95;
+  letter-spacing:-3px;
+  margin-bottom:22px;
+}
+
+.solution-content h2 span{
+  color:var(--accent);
+}
+
+.solution-subtitle{
+  color:#E8E8E8;
+  font-size:22px;
+  margin-bottom:28px;
+}
+
+.solution-content p{
+  color:#AAB4C0;
+  line-height:1.9;
+  margin-bottom:26px;
+}
+
+.solution-columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  margin-top:30px;
+}
+
+.solution-columns h4{
+  color:var(--accent);
+  margin-bottom:16px;
+}
+
+.solution-columns ul{
+  list-style:none;
+}
+
+.solution-columns ul li{
+  margin-bottom:12px;
+  color:#dfe5ec;
+  position:relative;
+  padding-left:18px;
+}
+
+.solution-columns ul li::before{
+  content:'•';
+  position:absolute;
+  left:0;
+  color:var(--accent);
+}
+
+.solution-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.learn-btn{
+  display:inline-block;
+  margin-top:30px;
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s ease;
+}
+
+.learn-btn:hover{
+  opacity:0.8;
+}
+
+/* ======================================================
+ADVANTAGE SECTION
+====================================================== */
+
+.advantage-panel{
+  background:linear-gradient(145deg,#101A29,#0D1522);
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:60px;
+}
+
+.advantage-panel h2{
+  text-align:center;
+  font-size:48px;
+  margin-bottom:50px;
+}
+
+.adv-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:30px;
+}
+
+.adv-item{
+  text-align:center;
+}
+
+.adv-icon{
+  width:74px;
+  height:74px;
+  border-radius:50%;
+  background:rgba(255,95,31,0.1);
+  border:1px solid rgba(255,95,31,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  font-size:28px;
+  color:var(--accent);
+}
+
+.adv-item h4{
+  margin-bottom:14px;
+}
+
+.adv-item p{
+  color:#AAB4C0;
+  line-height:1.8;
+}
+
+/* ======================================================
+PROCESS SECTION
+====================================================== */
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.process-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:36px;
+  transition:0.35s ease;
+}
+
+.process-card:hover{
+  border-color:rgba(255,95,31,0.22);
+  transform:translateY(-4px);
+}
+
+.process-number{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  border:2px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:24px;
+  background:rgba(255,95,31,0.07);
+}
+
+.process-card h3{
+  margin-bottom:18px;
+}
+
+.process-card p{
+  color:#AAB4C0;
+  line-height:1.8;
+}
+
+/* ======================================================
+INDUSTRIES
+====================================================== */
+
+.industries-panel{
+  text-align:center;
+}
+
+.industries-panel h2{
+  font-size:48px;
+  margin-bottom:50px;
+}
+
+.industries-grid{
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:20px;
+}
+
+.industry-item{
+  padding:24px 10px;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.industry-item:last-child{
+  border-right:none;
+}
+
+.industry-icon{
+  color:var(--accent);
+  font-size:28px;
+  margin-bottom:16px;
+}
+
+/* ======================================================
+CTA
+====================================================== */
+
+.cta-panel{
+  background:linear-gradient(145deg,#0E1624,#121E2F);
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:420px 1fr auto;
+  align-items:center;
+}
+
+.cta-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.cta-content{
+  padding:50px;
+}
+
+.cta-content h2{
+  font-size:54px;
+  line-height:1;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+
+.cta-content span{
+  color:var(--accent);
+}
+
+.cta-content p{
+  color:#AAB4C0;
+  line-height:1.9;
+}
+
+.cta-action{
+  padding-right:50px;
+}
+
+/* ======================================================
+FOOTER — identical to v3
+====================================================== */
+
+footer{
+  background:#060D17;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:80px 0;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-logo img{
+  height:54px;
+  margin-bottom:20px;
+}
+
+.footer-logo p{
+  color:#9FAAB7;
+  line-height:1.9;
+  max-width:320px;
+  font-size:15px;
+}
+
+.footer-column h4{
+  margin-bottom:22px;
+  font-size:15px;
+}
+
+.footer-column a{
+  display:block;
+  color:#9FAAB7;
+  text-decoration:none;
+  margin-bottom:14px;
+  font-size:15px;
+  transition:0.3s ease;
+}
+
+.footer-column a:hover{
+  color:white;
+}
+
+.footer-copy{
+  margin-top:60px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  color:#7F8A96;
+  font-size:14px;
+}
+
+/* ======================================================
+RESPONSIVE
+====================================================== */
+
+@media(max-width:1200px){
+
+  .solution-card,
+  .cta-panel,
+  .footer-grid,
+  .process-grid,
+  .challenge-grid,
+  .industries-grid,
+  .adv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-left{
+    width:100%;
+  }
+
+  .hero-left h1{
+    font-size:58px;
+    letter-spacing:-3px;
+  }
+
+  .solution-content{
+    padding:40px;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- ======================================================
+NAVBAR
+====================================================== -->
+
+<nav class="navbar">
+  <div class="container nav-inner">
+
+    <!-- CHANGE LOGO HERE -->
+    <div class="logo">
+      <img
+        src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:best/v1778483164/Catalysto_Logo_Final_horizontal_idx3pb.png"
+        alt="Catalysto"
+      >
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Resources</a>
+    </div>
+
+    <a href="#" class="primary-btn">Let's Talk</a>
+
+  </div>
+</nav>
+
+<!-- ======================================================
+HERO
+====================================================== -->
+
+<section class="hero">
+
+  <!-- Background image inside its own clip wrapper — same as homepage -->
+  <!-- TO CHANGE HERO IMAGE: replace the src URL below -->
+  <div class="hero-bg-clip">
+    <img
+      src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1920,f_auto,q_auto:best/v1778479494/Employee_working_in_factory_g9jvbw.png"
+      alt="Factory"
+    >
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+
+    <!-- .hero-left mirrors homepage exactly — gives correct left alignment -->
+    <div class="hero-left">
+
+      <div class="hero-tag">Explore Solutions</div>
+
+      <h1>
+        Smarter Systems For Modern <span>Manufacturing</span>
+      </h1>
+
+      <p>
+        Catalysto helps manufacturing businesses improve communication, workforce performance and operational visibility through practical systems built for factories.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="primary-btn">Explore Solutions</a>
+        <a href="#" class="secondary-btn">Talk To Us</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+CHALLENGES SECTION
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="challenge-panel">
+
+      <h2 class="challenge-title">
+        Built Around Real Factory Challenges
+      </h2>
+
+      <div class="challenge-grid">
+
+        <div class="challenge-item">
+          <div class="challenge-icon">👥</div>
+          <h4>Workforce Inconsistency</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">📋</div>
+          <h4>SOP Adherence Gaps</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">🎓</div>
+          <h4>Training Inefficiencies</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">📊</div>
+          <h4>Production Visibility</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">💬</div>
+          <h4>Communication Breakdowns</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">⚕</div>
+          <h4>Ergonomic Fatigue</h4>
+        </div>
+
+        <div class="challenge-item">
+          <div class="challenge-icon">◔</div>
+          <h4>Low Operational Transparency</h4>
+        </div>
+
+      </div>
+
+      <div class="challenge-bottom">
+        Most factories already have machines, teams and processes.
+        What they often lack is <span>clarity, visibility and execution systems.</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+CONTENT ENGINE
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="solution-card">
+
+      <div class="solution-content">
+
+        <div class="solution-number">01</div>
+
+        <h2>
+          Content <span>Engine</span>
+        </h2>
+
+        <div class="solution-subtitle">
+          Industrial Communication Systems
+        </div>
+
+        <p>
+          Structured communication and training ecosystems that improve workforce understanding, operational consistency and brand perception.
+        </p>
+
+        <div class="solution-columns">
+
+          <div>
+            <h4>What We Build</h4>
+            <ul>
+              <li>SOP Training Video Systems</li>
+              <li>Industrial Business Films</li>
+              <li>Employer Branding Content</li>
+              <li>Training Systems</li>
+              <li>Safety Communication Assets</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Why It Matters</h4>
+            <p>
+              Content Engine converts operational knowledge into scalable visual systems.
+            </p>
+          </div>
+
+        </div>
+
+        <a href="#" class="learn-btn">Learn More About Content Engine →</a>
+
+      </div>
+
+      <div class="solution-image">
+
+        <!-- CHANGE IMAGE HERE -->
+        <img src="CONTENT-ENGINE.jpg" alt="Content Engine">
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+PERFORMANCE OS
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="solution-card">
+
+      <div class="solution-image">
+        <!-- CHANGE IMAGE HERE -->
+        <img src="PERFORMANCE-OS.jpg" alt="PerformanceOS">
+      </div>
+
+      <div class="solution-content">
+
+        <div class="solution-number">02</div>
+
+        <h2>
+          Performance<span>OS</span>
+        </h2>
+
+        <div class="solution-subtitle">
+          Operational Visibility & Workforce Intelligence
+        </div>
+
+        <p>
+          Practical dashboards, workforce analytics and production visibility systems.
+        </p>
+
+        <div class="solution-columns">
+
+          <div>
+            <h4>What We Build</h4>
+            <ul>
+              <li>Production Dashboards</li>
+              <li>Shift Reporting Systems</li>
+              <li>Downtime Visibility</li>
+              <li>Factory KPI Systems</li>
+              <li>Workforce Analytics</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Why It Matters</h4>
+            <p>
+              PerformanceOS transforms fragmented factory data into operational intelligence.
+            </p>
+          </div>
+
+        </div>
+
+        <a href="#" class="learn-btn">Explore PerformanceOS →</a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+HEALTH+
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="solution-card">
+
+      <div class="solution-content">
+
+        <div class="solution-number">03</div>
+
+        <h2>
+          Health<span>+</span>
+        </h2>
+
+        <div class="solution-subtitle">
+          Workforce Sustainability & Ergonomic Systems
+        </div>
+
+        <p>
+          Ergonomic and workforce sustainability systems for industrial environments.
+        </p>
+
+        <div class="solution-columns">
+
+          <div>
+            <h4>What We Help With</h4>
+            <ul>
+              <li>Ergonomic Assessments</li>
+              <li>Fatigue Reduction Systems</li>
+              <li>Movement Optimisation</li>
+              <li>Workstation Analysis</li>
+              <li>Operator Comfort Improvements</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Why It Matters</h4>
+            <p>
+              Health+ helps factories create healthier operational environments without disrupting production.
+            </p>
+          </div>
+
+        </div>
+
+        <a href="#" class="learn-btn">Explore Health+ →</a>
+
+      </div>
+
+      <div class="solution-image">
+        <!-- CHANGE IMAGE HERE -->
+        <img src="HEALTH-PLUS.jpg" alt="Health Plus">
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+FOOTER — identical to v3
+====================================================== -->
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <!-- TO CHANGE FOOTER LOGO: replace the src below -->
+      <div class="footer-logo">
+        <img
+          src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:best/v1778483164/Catalysto_Logo_Final_horizontal_idx3pb.png"
+          alt="Catalysto"
+        >
+        <p>
+          Smarter. Faster. Healthier.<br><br>
+          Operational systems for modern manufacturing businesses.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Solutions</h4>
+        <a href="#">Content Engine</a>
+        <a href="#">PerformanceOS</a>
+        <a href="#">Health+</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Industries</h4>
+        <a href="#">Automotive</a>
+        <a href="#">Engineering</a>
+        <a href="#">Industrial Manufacturing</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <a href="mailto:grow@catalysto.in">grow@catalysto.in</a>
+        <a href="#">Pune, India</a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Catalysto. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

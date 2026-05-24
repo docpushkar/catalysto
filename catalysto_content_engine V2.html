@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Engine | Catalysto</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ======================================================
+   EDIT COLORS HERE
+====================================================== */
+
+:root{
+  --bg:#000000;
+  --bg2:#0D0D0D;
+  --card:#111111;
+  --border:rgba(255,255,255,0.08);
+  --text:#F7F7F7;
+  --muted:#AAB4C0;
+  --accent:#FF5F1F;
+  --accent-soft:#ff8c57;
+}
+
+/* ======================================================
+   GLOBAL
+====================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:1400px;
+  margin:auto;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+section{
+  padding:90px 0;
+}
+
+p{
+  color:var(--muted);
+  line-height:1.9;
+}
+
+/* ======================================================
+   NAVBAR — identical to explore v2
+====================================================== */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(7,17,31,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 0;
+}
+
+.logo img{
+  height:54px;
+}
+
+.nav-links{
+  display:flex;
+  gap:36px;
+}
+
+.nav-links a{
+  color:#dbe2ea;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  transition:0.3s ease;
+}
+
+.nav-links a:hover{
+  color:var(--accent);
+}
+
+.primary-btn{
+  background:var(--accent);
+  color:#111;
+  text-decoration:none;
+  padding:15px 28px;
+  border-radius:12px;
+  font-weight:700;
+  transition:0.3s ease;
+  box-shadow:0 10px 30px rgba(255,95,31,0.22);
+  display:inline-flex;
+  align-items:center;
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+}
+
+.secondary-btn{
+  border:1px solid rgba(255,255,255,0.15);
+  color:white;
+  text-decoration:none;
+  padding:15px 28px;
+  border-radius:12px;
+  transition:0.3s ease;
+  background:rgba(255,255,255,0.03);
+}
+
+.secondary-btn:hover{
+  background:white;
+  color:black;
+  transform:translateY(-3px);
+}
+
+/* ======================================================
+   HERO — identical to explore v2 / homepage v3
+   TO CHANGE HERO IMAGE: replace src in .hero-bg-clip img
+====================================================== */
+
+.hero{
+  position:relative;
+  min-height:920px;
+  overflow:visible;
+  padding-top:120px;
+  isolation:isolate;
+}
+
+.hero-bg-clip{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+}
+
+.hero-bg-clip img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:zoomHero 18s ease-in-out infinite alternate;
+}
+
+@keyframes zoomHero{
+  from{ transform:scale(1); }
+  to{ transform:scale(1.05); }
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(to right,
+    rgba(5,10,20,0.94) 20%,
+    rgba(5,10,20,0.75) 48%,
+    rgba(5,10,20,0.42));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  min-height:760px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-left{
+  width:58%;
+}
+
+.hero-tag{
+  color:var(--accent);
+  font-size:14px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+  font-weight:600;
+}
+
+.hero-left h1{
+  font-size:86px;
+  line-height:0.94;
+  letter-spacing:-5px;
+  font-weight:800;
+  max-width:820px;
+  margin-bottom:34px;
+}
+
+.hero-left h1 span{
+  color:var(--accent);
+}
+
+.hero-left p{
+  font-size:20px;
+  line-height:1.9;
+  color:#C0C8D2;
+  max-width:700px;
+  margin-bottom:42px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+}
+
+/* ======================================================
+   SECTION TITLE — centered heading used across sections
+====================================================== */
+
+.section-title{
+  text-align:center;
+  margin-bottom:70px;
+}
+
+.section-title h2{
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:-3px;
+  margin-bottom:16px;
+}
+
+.section-title span{
+  color:var(--accent);
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:16px;
+  max-width:600px;
+  margin:0 auto;
+}
+
+/* ======================================================
+   INTRO SECTION
+====================================================== */
+
+.intro-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.intro-image{
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+
+.intro-text h2{
+  font-size:52px;
+  line-height:0.96;
+  font-weight:800;
+  letter-spacing:-3px;
+  margin-bottom:22px;
+}
+
+.intro-text h2 span{
+  color:var(--accent);
+}
+
+.intro-text > p{
+  color:var(--muted);
+  line-height:1.9;
+  font-size:16px;
+}
+
+.intro-points{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+/* Each intro point — styled like explore v2 panel tiles */
+.intro-point{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px 24px;
+  font-size:15px;
+  font-weight:600;
+  color:#dfe5ec;
+  transition:0.3s ease;
+}
+
+.intro-point:hover{
+  border-color:rgba(255,95,31,0.22);
+}
+
+/* ======================================================
+   SERVICE CARDS
+====================================================== */
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
+
+.service-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  transition:0.35s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(255,95,31,0.22);
+}
+
+.service-image img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  filter:saturate(0.85) brightness(0.88);
+  transition:filter 0.5s ease;
+}
+
+.service-card:hover .service-image img{
+  filter:saturate(1) brightness(1);
+}
+
+.service-content{
+  padding:36px;
+}
+
+.service-number{
+  color:var(--accent);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+.service-content h3{
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:-1.5px;
+  margin-bottom:14px;
+  color:#f0f4f8;
+}
+
+.service-content > p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+.service-content ul{
+  list-style:none;
+  margin-top:22px;
+}
+
+.service-content ul li{
+  position:relative;
+  padding-left:22px;
+  margin-bottom:12px;
+  color:#dfe5ec;
+  font-size:15px;
+}
+
+.service-content ul li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:7px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--accent);
+  opacity:0.85;
+}
+
+/* ======================================================
+   CASE STUDIES
+====================================================== */
+
+.case-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.case-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:36px;
+  transition:0.35s ease;
+}
+
+.case-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,95,31,0.22);
+}
+
+.case-card h3{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-1px;
+  margin-bottom:18px;
+  color:#f0f4f8;
+}
+
+.case-card > p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+.case-label{
+  color:var(--accent);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-top:24px;
+  margin-bottom:10px;
+}
+
+/* ======================================================
+   PROCESS — identical style to explore v2
+====================================================== */
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.process-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:36px;
+  transition:0.35s ease;
+}
+
+.process-card:hover{
+  border-color:rgba(255,95,31,0.22);
+  transform:translateY(-4px);
+}
+
+.process-number{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  border:2px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent);
+  font-weight:800;
+  font-size:16px;
+  margin-bottom:24px;
+  background:rgba(255,95,31,0.07);
+}
+
+.process-card h3{
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-0.5px;
+  margin-bottom:14px;
+  color:#f0f4f8;
+}
+
+.process-card p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* ======================================================
+   PACKAGES
+====================================================== */
+
+.package-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.package-card{
+  background:linear-gradient(180deg,#172233,#111A28);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:42px;
+  transition:0.35s ease;
+}
+
+.package-card:hover{
+  transform:translateY(-6px);
+}
+
+/* Featured (middle) package — orange border accent */
+.package-card.featured{
+  border:1px solid rgba(255,95,31,0.45);
+  box-shadow:0 0 40px rgba(255,95,31,0.08);
+}
+
+.package-title{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:-1px;
+  margin-bottom:12px;
+  color:#f0f4f8;
+}
+
+.package-card > p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+}
+
+.package-price{
+  color:var(--accent);
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-2px;
+  margin:26px 0;
+}
+
+.package-card ul{
+  list-style:none;
+}
+
+.package-card ul li{
+  margin-bottom:13px;
+  padding-left:22px;
+  position:relative;
+  color:#dfe5ec;
+  font-size:15px;
+}
+
+.package-card ul li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:7px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--accent);
+  opacity:0.85;
+}
+
+/* ======================================================
+   CTA — identical to explore v2
+====================================================== */
+
+.cta-panel{
+  background:linear-gradient(145deg,#0E1624,#121E2F);
+  border:1px solid var(--border);
+  border-radius:36px;
+  padding:80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+}
+
+.cta-panel h2{
+  font-size:52px;
+  line-height:0.96;
+  letter-spacing:-3px;
+  font-weight:800;
+  max-width:720px;
+  margin-bottom:18px;
+}
+
+.cta-panel h2 span{
+  color:var(--accent);
+}
+
+.cta-panel > div > p{
+  color:var(--muted);
+  line-height:1.9;
+  max-width:640px;
+  font-size:16px;
+}
+
+/* ======================================================
+   FOOTER — identical to explore v2 / homepage v3
+====================================================== */
+
+footer{
+  background:#060D17;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:80px 0;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-logo img{
+  height:54px;
+  margin-bottom:20px;
+}
+
+.footer-logo p{
+  color:#9FAAB7;
+  line-height:1.9;
+  max-width:320px;
+  font-size:15px;
+}
+
+.footer-column h4{
+  margin-bottom:22px;
+  font-size:15px;
+}
+
+.footer-column a{
+  display:block;
+  color:#9FAAB7;
+  text-decoration:none;
+  margin-bottom:14px;
+  font-size:15px;
+  transition:0.3s ease;
+}
+
+.footer-column a:hover{
+  color:white;
+}
+
+.footer-copy{
+  margin-top:60px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  color:#7F8A96;
+  font-size:14px;
+}
+
+/* ======================================================
+   VIDEO SECTION
+====================================================== */
+
+.video-panel{
+  background:linear-gradient(145deg,#101A29,#0D1522);
+  border:1px solid var(--border);
+  border-radius:36px;
+  padding:70px;
+}
+
+.video-header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+  margin-bottom:56px;
+}
+
+.video-header h2{
+  font-size:52px;
+  font-weight:800;
+  letter-spacing:-3px;
+  line-height:0.96;
+}
+
+.video-header h2 span{
+  color:var(--accent);
+}
+
+.video-header p{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+}
+
+/* Responsive 16:9 YouTube embed wrapper */
+.video-embed{
+  position:relative;
+  width:100%;
+  padding-bottom:56.25%;
+  height:0;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.video-embed iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media(max-width:1200px){
+
+  .nav-links{ display:none; }
+
+  .hero-left{
+    width:100%;
+  }
+
+  .hero-left h1{
+    font-size:58px;
+    letter-spacing:-3px;
+  }
+
+  .services-grid,
+  .case-grid,
+  .process-grid,
+  .package-grid,
+  .footer-grid,
+  .intro-grid,
+  .video-header{
+    grid-template-columns:1fr;
+  }
+
+  .video-panel{ padding:40px 36px; }
+
+  .cta-panel{
+    flex-direction:column;
+    gap:40px;
+    text-align:center;
+    padding:52px 40px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .hero-left h1{
+    font-size:44px;
+    letter-spacing:-2px;
+  }
+
+  .hero-buttons{ flex-direction:column; }
+
+  .intro-points{ grid-template-columns:1fr; }
+
+  .section-title h2,
+  .intro-text h2,
+  .cta-panel h2{
+    font-size:36px;
+    letter-spacing:-2px;
+  }
+
+  .cta-panel{ padding:36px 28px; }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- ======================================================
+NAVBAR
+====================================================== -->
+
+<nav class="navbar">
+  <div class="container nav-inner">
+
+    <!-- TO CHANGE LOGO: replace the src URL below -->
+<!--
+    <div class="logo">
+      <img
+        src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:best/v1778483164/Catalysto_Logo_Final_horizontal_idx3pb.png"
+        alt="Catalysto"
+      >
+    </div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Case Studies</a>
+    </div>
+-->
+    <a href="#" class="primary-btn">Let's Talk</a>
+
+  </div>
+</nav>
+
+<!-- ======================================================
+HERO
+TO CHANGE HERO IMAGE: replace the src URL in hero-bg-clip
+====================================================== -->
+
+<section class="hero">
+
+  <div class="hero-bg-clip">
+    <!-- TO CHANGE HERO IMAGE: replace URL below -->
+    <img
+      src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1920,f_auto,q_auto:best/v1778484322/business-film-camera_hxprzd.jpg"
+      alt="Content Engine"
+    >
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+    <div class="hero-left">
+
+      <div class="hero-tag">Content Engine</div>
+
+      <h1>
+        Industrial Communication Systems For Modern <span>Factories</span>
+      </h1>
+
+      <p>
+        SOP videos, industrial films, workforce training systems and operational communication infrastructure designed specifically for manufacturing businesses.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="primary-btn">Schedule A Discussion</a>
+        <a href="#" class="secondary-btn">View Work</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================================================
+INTRO
+TO CHANGE IMAGE: replace src in .intro-image img
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="intro-grid">
+
+      <div class="intro-image">
+        <!-- TO CHANGE IMAGE: replace URL below -->
+        <img src="YOUR-INTRO-IMAGE.jpg" alt="Industrial Communication">
+      </div>
+
+      <div class="intro-text">
+
+        <h2>
+          We don't create videos.
+          We build communication <span>systems.</span>
+        </h2>
+
+        <p>
+          Content Engine helps manufacturing companies simplify training, standardise processes and improve operational communication through scalable visual systems.
+        </p>
+
+        <div class="intro-points">
+          <div class="intro-point">Faster Workforce Training</div>
+          <div class="intro-point">SOP Standardisation</div>
+          <div class="intro-point">Better Audit Readiness</div>
+          <div class="intro-point">Reduced Communication Gaps</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+SERVICES
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>What We <span>Offer</span></h2>
+      <p>Communication systems designed around real factory challenges.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- SERVICE 1 -->
+      <div class="service-card">
+        <div class="service-image">
+          <!-- TO CHANGE IMAGE: replace URL below -->
+          <img src="SOP-VIDEOS.jpg" alt="SOP Videos">
+        </div>
+        <div class="service-content">
+          <div class="service-number">01</div>
+          <h3>SOP & Process Videos</h3>
+          <p>Visual SOP systems that simplify training and improve process consistency.</p>
+          <ul>
+            <li>Machine SOP Videos</li>
+            <li>Inspection Procedures</li>
+            <li>Operator Training</li>
+            <li>QR Training Systems</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 2 -->
+      <div class="service-card">
+        <div class="service-image">
+          <!-- TO CHANGE IMAGE: replace URL below -->
+          <img src="BUSINESS-FILMS.jpg" alt="Business Films">
+        </div>
+        <div class="service-content">
+          <div class="service-number">02</div>
+          <h3>Industrial Business Films</h3>
+          <p>Strategic industrial storytelling designed for manufacturing brands.</p>
+          <ul>
+            <li>Company Films</li>
+            <li>Plant Walkthroughs</li>
+            <li>Capability Videos</li>
+            <li>Trade Show Films</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 3 -->
+      <div class="service-card">
+        <div class="service-image">
+          <!-- TO CHANGE IMAGE: replace URL below -->
+          <img src="SAFETY-COMMUNICATION.jpg" alt="Safety Communication">
+        </div>
+        <div class="service-content">
+          <div class="service-number">03</div>
+          <h3>Safety Communication</h3>
+          <p>Improve workforce awareness through visual safety systems.</p>
+          <ul>
+            <li>Safety Inductions</li>
+            <li>EHS Communication</li>
+            <li>Behavioural Safety</li>
+            <li>Awareness Campaigns</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 4 -->
+      <div class="service-card">
+        <div class="service-image">
+          <!-- TO CHANGE IMAGE: replace URL below -->
+          <img src="EMPLOYER-BRANDING.jpg" alt="Employer Branding">
+        </div>
+        <div class="service-content">
+          <div class="service-number">04</div>
+          <h3>Employer Branding</h3>
+          <p>Help manufacturing businesses attract modern industrial talent.</p>
+          <ul>
+            <li>Recruitment Campaigns</li>
+            <li>Culture Videos</li>
+            <li>Hiring Content</li>
+            <li>Workplace Storytelling</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+CASE STUDIES
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Real Factory <span>Use Cases</span></h2>
+    </div>
+
+    <div class="case-grid">
+
+      <div class="case-card">
+        <h3>Automotive Components Manufacturer</h3>
+        <p>Built 42 SOP training videos and multilingual operator systems for faster onboarding and reduced supervisor dependency.</p>
+        <div class="case-label">Result</div>
+        <p>Improved process consistency and audit readiness.</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Engineering Manufacturing Company</h3>
+        <p>Developed industrial business films and export communication assets for global presentations.</p>
+        <div class="case-label">Result</div>
+        <p>Better client engagement and stronger inbound enquiries.</p>
+      </div>
+
+      <div class="case-card">
+        <h3>Process Industry Plant</h3>
+        <p>Created safety induction systems and workforce communication visuals.</p>
+        <div class="case-label">Result</div>
+        <p>Increased workforce participation and better training retention.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+VIDEO SECTION
+TO CHANGE VIDEO: replace the YouTube embed ID in the iframe src
+Current video: https://youtu.be/Uw-AudD5-LM
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="video-panel">
+
+      <!-- Heading and context — edit text here -->
+      <div class="video-header">
+
+        <h2>
+          See How <span>Training Content</span> Works On The Factory Floor
+        </h2>
+
+        <p>
+          Wrong handling methods are one of the leading causes of equipment failure
+          in manufacturing environments — often resulting in costly technician visits,
+          unplanned downtime and production loss.<br><br>
+          This training video was built specifically to standardise correct equipment
+          handling procedures, reducing field service calls and improving operator
+          confidence across facilities.
+        </p>
+
+      </div>
+
+      <!-- YouTube embed — 16:9 responsive -->
+      <!-- TO CHANGE VIDEO: replace "Uw-AudD5-LM" in the src below with your YouTube video ID -->
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/Uw-AudD5-LM"
+          title="Equipment Handling Training Video | Catalysto Content Engine"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+PROCESS
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>How It <span>Works</span></h2>
+    </div>
+
+    <div class="process-grid">
+
+      <div class="process-card">
+        <div class="process-number">01</div>
+        <h3>Plant Understanding</h3>
+        <p>We study operations, workforce structure and communication gaps.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="process-number">02</div>
+        <h3>Content Architecture</h3>
+        <p>We identify communication priorities and training systems.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="process-number">03</div>
+        <h3>Production</h3>
+        <p>We create videos, documentation systems and digital repositories.</p>
+      </div>
+
+      <div class="process-card">
+        <div class="process-number">04</div>
+        <h3>Deployment</h3>
+        <p>We help implement systems across departments and facilities.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+PACKAGES
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Service <span>Packages</span></h2>
+      <p>Flexible systems for growing and enterprise manufacturing businesses.</p>
+    </div>
+
+    <div class="package-grid">
+
+      <div class="package-card">
+        <div class="package-title">Starter</div>
+        <p>Ideal for factories beginning digital communication systems.</p>
+        <div class="package-price">₹1.5L+</div>
+        <ul>
+          <li>1 Industrial Film</li>
+          <li>5 SOP Videos</li>
+          <li>Photography Support</li>
+          <li>Basic Branding Assets</li>
+        </ul>
+      </div>
+
+      <!-- Featured package — highlighted with orange border -->
+      <div class="package-card featured">
+        <div class="package-title">Operational System</div>
+        <p>Designed for workforce training and SOP standardisation.</p>
+        <div class="package-price">₹4L+</div>
+        <ul>
+          <li>SOP Video Library</li>
+          <li>Department Training</li>
+          <li>QR Access System</li>
+          <li>Safety Communication</li>
+          <li>Training Repository</li>
+        </ul>
+      </div>
+
+      <div class="package-card">
+        <div class="package-title">Enterprise</div>
+        <p>Complete industrial communication infrastructure for large operations.</p>
+        <div class="package-price">₹12L+</div>
+        <ul>
+          <li>Company-wide Systems</li>
+          <li>Continuous Content Production</li>
+          <li>Employer Branding</li>
+          <li>Audit Support Content</li>
+          <li>Multi-location Deployment</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+CTA
+====================================================== -->
+
+<section>
+  <div class="container">
+
+    <div class="cta-panel">
+
+      <div>
+        <h2>
+          Build A Smarter Factory Communication <span>System</span>
+        </h2>
+        <p>
+          Whether you need SOP digitisation, industrial films or workforce training systems — Catalysto helps manufacturing businesses build scalable communication infrastructure.
+        </p>
+      </div>
+
+      <a href="#" class="primary-btn">Schedule A Discussion</a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+FOOTER — identical to explore v2 / homepage v3
+TO CHANGE FOOTER LOGO: replace the src URL below
+====================================================== -->
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-logo">
+        <!-- TO CHANGE FOOTER LOGO: replace URL below -->
+        <img
+          src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:best/v1778483164/Catalysto_Logo_Final_horizontal_idx3pb.png"
+          alt="Catalysto"
+        >
+        <p>
+          Smarter. Faster. Healthier.<br><br>
+          Operational systems for modern manufacturing businesses.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Solutions</h4>
+        <a href="#">Content Engine</a>
+        <a href="#">PerformanceOS</a>
+        <a href="#">Health+</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Industries</h4>
+        <a href="#">Automotive</a>
+        <a href="#">Engineering</a>
+        <a href="#">Industrial Manufacturing</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <a href="mailto:grow@catalysto.in">grow@catalysto.in</a>
+        <a href="#">Pune, India</a>
+      </div>
+
+    </div>
+
+    <div class="footer-copy">
+      © 2026 Catalysto. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
