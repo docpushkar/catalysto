@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Solutions | Catalysto</title>
+<meta name="description" content="Three practical systems — Content Engine, PerformanceOS and Health+ — built for modern manufacturing businesses."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* challenge panel */
+.challenge-panel{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:clamp(32px,4vw,64px)}
+.challenge-panel h2{text-align:center;font-size:clamp(28px,3vw,44px);font-weight:800;letter-spacing:-2px;margin-bottom:48px}
+.challenge-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:20px;text-align:center}
+.challenge-item{border-right:1px solid rgba(255,255,255,0.05);padding:0 12px}
+.challenge-item:last-child{border-right:none}
+.challenge-icon{font-size:28px;margin-bottom:14px}
+.challenge-item h4{font-size:14px;line-height:1.5;color:var(--muted);font-weight:500}
+.challenge-bottom{text-align:center;margin-top:40px;color:var(--muted);line-height:1.9;font-size:15px}
+.challenge-bottom .accent{color:var(--accent);font-weight:600}
+/* solution cards */
+.sol-card{background:var(--card);border:1px solid var(--border);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:32px;box-shadow:0 24px 60px rgba(0,0,0,0.35);transition:transform 0.3s,border-color 0.3s}
+.sol-card:hover{border-color:rgba(255,95,31,0.25);transform:translateY(-4px)}
+.sol-card.reverse{direction:rtl}
+.sol-card.reverse>*{direction:ltr}
+.sol-content{padding:clamp(32px,4vw,60px)}
+.sol-num{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.sol-content h2{font-size:clamp(36px,4vw,58px);font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:14px}
+.sol-content h2 .accent{color:var(--accent)}
+.sol-subtitle{color:#E8E8E8;font-size:18px;margin-bottom:20px;font-weight:500}
+.sol-content>p{color:var(--muted);line-height:1.9;margin-bottom:24px}
+.sol-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px}
+.sol-cols h4{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.sol-cols ul{list-style:none}
+.sol-cols ul li{font-size:14px;color:#dfe5ec;margin-bottom:10px;padding-left:16px;position:relative;line-height:1.4}
+.sol-cols ul li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0.7}
+.sol-cols p{font-size:14px;color:var(--muted);line-height:1.8}
+.learn-btn{display:inline-flex;align-items:center;gap:8px;margin-top:28px;color:var(--accent);font-weight:700;font-size:15px;border:1px solid rgba(255,95,31,0.3);padding:12px 22px;border-radius:10px;transition:background 0.25s,transform 0.25s}
+.learn-btn:hover{background:rgba(255,95,31,0.1);transform:translateX(4px)}
+.sol-image{position:relative;overflow:hidden;min-height:400px}
+.sol-image img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.8) saturate(0.9);transition:transform 0.6s,filter 0.4s}
+.sol-card:hover .sol-image img{transform:scale(1.04);filter:brightness(1) saturate(1)}
+.sol-image-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,24,37,0.6),transparent)}
+.sol-card.reverse .sol-image-overlay{background:linear-gradient(to left,rgba(13,24,37,0.6),transparent)}
+@media(max-width:900px){.challenge-grid{grid-template-columns:repeat(4,1fr)}.challenge-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);padding:0 0 20px}.sol-card,.sol-card.reverse{grid-template-columns:1fr;direction:ltr}.sol-image{min-height:240px}}
+@media(max-width:600px){.challenge-grid{grid-template-columns:repeat(2,1fr)}.sol-cols{grid-template-columns:1fr}}
+</style>
+</head><body>
+<nav class="navbar"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" width="150" height="36"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown"><a href="solutions.html" class="active">Solutions</a><div class="dropdown-menu"><a href="content-engine.html"><span>🎬</span> Content Engine</a><a href="performanceos.html"><span>🏭</span> PerformanceOS</a><a href="health-plus.html"><span>💚</span> Health+</a></div></li>
+    <li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta"><a href="contact.html" class="btn-primary">Let's Talk</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><div class="mob-sub">Solutions</div><a href="solutions.html" style="padding-left:28px">All Solutions</a><a href="content-engine.html" style="padding-left:28px">🎬 Content Engine</a><a href="performanceos.html" style="padding-left:28px">🏭 PerformanceOS</a><a href="health-plus.html" style="padding-left:28px">💚 Health+</a><div class="mob-divider"></div><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-primary" style="margin-top:12px;justify-content:center">Let's Talk</a></div>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1920,f_auto,q_auto:good/v1778479494/Employee_working_in_factory_g9jvbw.png" alt="" role="presentation" fetchpriority="high" decoding="sync" width="1920" height="1080"></div>
+  <div class="hero-overlay"></div>
+  <div class="container"><div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>Explore Solutions</div>
+    <h1 class="hero-title">Smarter Systems For<br>Modern <span class="accent">Manufacturing</span></h1>
+    <p class="hero-desc">Catalysto helps manufacturing businesses improve communication, workforce performance and operational visibility through practical systems built for factories.</p>
+    <div class="hero-btns"><a href="contact.html" class="btn-primary">Talk To Us</a><a href="#solutions" class="btn-secondary">See All Solutions</a></div>
+  </div></div>
+</section>
+
+<section><div class="container">
+  <div class="challenge-panel reveal">
+    <h2>Built Around Real <span style="color:var(--accent)">Factory Challenges</span></h2>
+    <div class="challenge-grid">
+      <div class="challenge-item"><div class="challenge-icon">👥</div><h4>Workforce Inconsistency</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">📋</div><h4>SOP Adherence Gaps</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">🎓</div><h4>Training Inefficiencies</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">📊</div><h4>Production Visibility</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">💬</div><h4>Communication Breakdowns</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">⚕️</div><h4>Ergonomic Fatigue</h4></div>
+      <div class="challenge-item"><div class="challenge-icon">🔍</div><h4>Low Operational Transparency</h4></div>
+    </div>
+    <div class="challenge-bottom">Most factories already have machines, teams and processes. What they often lack is <span class="accent">clarity, visibility and execution systems.</span></div>
+  </div>
+</div></section>
+
+<section id="solutions"><div class="container">
+  <div class="section-title reveal"><div class="section-label" style="justify-content:center;display:flex">Our Solutions</div><h2>Three Systems. <span class="accent">One Goal.</span></h2><p>Each solution addresses a specific manufacturing performance gap — and all three work even better together.</p></div>
+  <div class="sol-card reveal"><div class="sol-content"><div class="sol-num">01 — Content Engine</div><h2>Content<br><span class="accent">Engine</span></h2><div class="sol-subtitle">Industrial Communication Systems</div><p>Structured communication and training ecosystems that improve workforce understanding, operational consistency and brand perception.</p><div class="sol-cols"><div><h4>What We Build</h4><ul><li>SOP Training Video Systems</li><li>Industrial Business Films</li><li>Employer Branding Content</li><li>Training Systems</li><li>Safety Communication Assets</li></ul></div><div><h4>Why It Matters</h4><p>Content Engine converts operational knowledge into scalable visual systems that work across every department and shift.</p></div></div><a href="content-engine.html" class="learn-btn">Learn More About Content Engine →</a></div><div class="sol-image"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="Content Engine" loading="lazy" width="800" height="600"><div class="sol-image-overlay"></div></div></div>
+  <div class="sol-card reverse reveal"><div class="sol-image"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto:good/v1778489740/Dashboard_bipsrv.png" alt="PerformanceOS" loading="lazy" width="800" height="600"><div class="sol-image-overlay"></div></div><div class="sol-content"><div class="sol-num">02 — PerformanceOS</div><h2>Performance<span class="accent">OS</span></h2><div class="sol-subtitle">Operational Visibility & Workforce Intelligence</div><p>Practical dashboards, workforce analytics and production visibility systems that transform fragmented factory data into actionable intelligence.</p><div class="sol-cols"><div><h4>What We Build</h4><ul><li>Production Dashboards</li><li>Shift Reporting Systems</li><li>Downtime Visibility</li><li>Factory KPI Systems</li><li>Workforce Analytics</li></ul></div><div><h4>Why It Matters</h4><p>PerformanceOS gives managers and floor teams the clarity to make faster, smarter decisions every shift.</p></div></div><a href="performanceos.html" class="learn-btn">Explore PerformanceOS →</a></div></div>
+  <div class="sol-card reveal"><div class="sol-content"><div class="sol-num">03 — Health+</div><h2>Health<span class="accent">+</span></h2><div class="sol-subtitle">Workforce Sustainability & Ergonomic Systems</div><p>Ergonomic and workforce sustainability systems that help factories create healthier operational environments without disrupting production.</p><div class="sol-cols"><div><h4>What We Help With</h4><ul><li>Ergonomic Assessments</li><li>Fatigue Reduction Systems</li><li>Movement Optimisation</li><li>Workstation Analysis</li><li>Operator Comfort Improvements</li></ul></div><div><h4>Why It Matters</h4><p>Healthier workers are more productive workers. Health+ makes workforce wellbeing a measurable operational asset.</p></div></div><a href="health-plus.html" class="learn-btn">Explore Health+ →</a></div><div class="sol-image"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_600,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Health+" loading="lazy" width="800" height="600"><div class="sol-image-overlay"></div></div></div>
+</div></section>
+
+<section><div class="container"><div class="cta-panel reveal"><div><h2>Not sure which system<br>you need <span class="accent">first?</span></h2><p>Let's talk through your factory's specific challenges. We'll recommend the right starting point.</p></div><a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;flex-shrink:0">Schedule a Discussion →</a></div></div></section>
+
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_108,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" loading="lazy" height="40" width="auto"><p>Operational systems for modern manufacturing businesses. Smarter. Faster. Healthier.</p></div><div class="footer-col"><h5>Solutions</h5><a href="content-engine.html">Content Engine</a><a href="performanceos.html">PerformanceOS</a><a href="health-plus.html">Health+</a></div><div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="solutions.html">All Solutions</a><a href="contact.html">Contact</a></div><div class="footer-col"><h5>Contact</h5><a href="https://api.whatsapp.com/send?phone=918275788875" target="_blank" rel="noopener">+91 8275 788 875</a><a href="mailto:grow@catalysto.in">grow@catalysto.in</a><a href="#">Pune, India</a></div></div><div class="footer-bottom"><span>© 2026 Catalysto. All Rights Reserved.</span><span>Smarter. Faster. Healthier.</span></div></div></footer>
+<script src="nav.js"></script>
+</body></html>

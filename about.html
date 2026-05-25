@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us | Catalysto</title>
+<meta name="description" content="Catalysto helps manufacturing companies improve operational visibility, workforce performance and industrial communication through practical, data-driven systems."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+<link rel="stylesheet" href="shared.css">
+<style>
+
+/* ============================================================
+   ABOUT PAGE — SPECIFIC STYLES
+============================================================ */
+
+/* ---- HERO ---- */
+.about-hero-inner{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  gap:80px;
+  align-items:center;
+  padding:100px 0 80px;
+}
+.hero-kpi-stack{display:flex;flex-direction:column;gap:14px}
+.kpi-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px 24px;
+  display:flex;align-items:center;gap:18px;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.kpi-card:hover{border-color:rgba(255,95,31,0.3);transform:translateX(4px)}
+.kpi-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:rgba(255,95,31,0.1);border:1px solid rgba(255,95,31,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.kpi-text{}
+.kpi-value{font-size:26px;font-weight:800;color:#fff;line-height:1;margin-bottom:2px}
+.kpi-label{font-size:12px;color:var(--muted)}
+
+/* ---- INTRO STRIP ---- */
+.intro-strip{
+  background:linear-gradient(160deg,#0E1824,#0A1320);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:60px 0;
+}
+.intro-strip-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.intro-strip-text h2{
+  font-size:clamp(28px,3vw,46px);
+  font-weight:800;letter-spacing:-2px;line-height:1.1;
+  margin-bottom:20px;
+}
+.intro-strip-text h2 .accent{color:var(--accent)}
+.intro-strip-text p{
+  font-size:16px;color:var(--muted);line-height:1.9;
+  margin-bottom:18px;
+}
+.intro-strip-image{border-radius:24px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/10}
+.intro-strip-image img{width:100%;height:100%;object-fit:cover}
+
+/* ---- APPROACH ---- */
+.approach-panel{
+  background:linear-gradient(160deg,#13202F,#0D1825);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:clamp(40px,5vw,80px);
+}
+.approach-panel h2{
+  font-size:clamp(28px,3vw,50px);
+  font-weight:800;letter-spacing:-2px;
+  margin-bottom:16px;text-align:center;
+}
+.approach-panel h2 .accent{color:var(--accent)}
+.approach-panel>.sub{text-align:center;color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 60px;line-height:1.8}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden}
+.approach-item{
+  background:rgba(6,12,20,0.95);
+  padding:36px 32px;
+  transition:background 0.3s;
+  position:relative;
+  overflow:hidden;
+}
+.approach-item::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.35s ease;
+}
+.approach-item:hover{background:rgba(13,22,36,0.95)}
+.approach-item:hover::before{transform:scaleX(1)}
+.approach-step{
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;
+}
+.approach-item h3{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-0.5px}
+.approach-item p{font-size:14px;color:var(--muted);line-height:1.8}
+.approach-item .approach-icon{font-size:28px;margin-bottom:16px}
+
+/* ---- VERTICALS ---- */
+.verticals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vertical-card{
+  background:linear-gradient(160deg,#13202F,#0D1825);
+  border:1px solid var(--border);
+  border-radius:24px;overflow:hidden;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+  display:flex;flex-direction:column;
+}
+.vertical-card:hover{transform:translateY(-6px);border-color:rgba(255,95,31,0.3);box-shadow:0 24px 60px rgba(0,0,0,0.4)}
+.vertical-card-img{height:180px;overflow:hidden;flex-shrink:0;position:relative}
+.vertical-card-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8) saturate(0.8);transition:transform 0.6s,filter 0.4s}
+.vertical-card:hover .vertical-card-img img{transform:scale(1.05);filter:brightness(1) saturate(1)}
+.vertical-card-img-fade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,#0D1825 100%)}
+.vertical-tag{position:absolute;bottom:14px;left:18px;z-index:2;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);background:rgba(6,12,20,0.7);padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.vertical-body{padding:24px 28px 32px;flex:1;display:flex;flex-direction:column}
+.vertical-body h3{font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:10px;color:#EDF2F7}
+.vertical-body h3 .accent{color:var(--accent)}
+.vertical-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.vertical-list{list-style:none;flex:1;margin-bottom:22px}
+.vertical-list li{font-size:13px;color:#C8D4DE;padding:5px 0 5px 16px;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;line-height:1.4}
+.vertical-list li:last-child{border-bottom:none}
+.vertical-list li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7}
+.vertical-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700;font-size:13px;transition:gap 0.2s;margin-top:auto}
+.vertical-link:hover{gap:12px}
+
+/* ---- WHY WORK WITH US ---- */
+.why-panel{
+  background:linear-gradient(160deg,#0E1824,#0A1320);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:clamp(40px,5vw,80px);
+}
+.why-panel h2{font-size:clamp(28px,3vw,48px);font-weight:800;letter-spacing:-2px;text-align:center;margin-bottom:16px}
+.why-panel h2 .accent{color:var(--accent)}
+.why-panel>.sub{text-align:center;color:var(--muted);max-width:560px;margin:0 auto 56px;font-size:16px;line-height:1.8}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{
+  background:rgba(255,255,255,0.025);
+  border:1px solid var(--border);
+  border-radius:18px;padding:28px 24px;
+  transition:border-color 0.3s,background 0.3s,transform 0.3s;
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.why-card:hover{border-color:rgba(255,95,31,0.3);background:rgba(255,95,31,0.04);transform:translateY(-4px)}
+.why-num{font-size:40px;font-weight:800;color:rgba(255,95,31,0.15);line-height:1;margin-bottom:14px}
+.why-card h4{font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.3}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* ---- VISION / MISSION ---- */
+.vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vision-card{
+  border-radius:24px;padding:48px;
+  position:relative;overflow:hidden;
+}
+.vision-card.dark{background:linear-gradient(160deg,#13202F,#0D1825);border:1px solid var(--border)}
+.vision-card.accent-card{background:linear-gradient(135deg,rgba(255,95,31,0.15),rgba(255,95,31,0.05));border:1px solid rgba(255,95,31,0.25)}
+.vision-card::before{
+  content:'';position:absolute;
+  right:-60px;top:-60px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,95,31,0.12),transparent 70%);
+  pointer-events:none;
+}
+.vision-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+}
+.vision-label::before{content:'';width:16px;height:2px;background:var(--accent);border-radius:2px}
+.vision-card h2{font-size:clamp(24px,2.5vw,38px);font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:18px}
+.vision-card h2 .accent{color:var(--accent)}
+.vision-card p{font-size:15px;color:var(--muted);line-height:1.9}
+.vision-card.accent-card p{color:rgba(240,244,248,0.8)}
+
+/* ---- DATA VISION BANNER ---- */
+.data-banner{
+  background:linear-gradient(135deg,#0A0F1A,#101C2C);
+  border:1px solid rgba(255,95,31,0.12);
+  border-radius:32px;
+  padding:clamp(40px,5vw,80px);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.data-banner::before{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,95,31,0.07),transparent 70%);
+  pointer-events:none;
+}
+.data-banner-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,95,31,0.1);border:1px solid rgba(255,95,31,0.2);
+  border-radius:100px;padding:6px 18px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:28px;
+}
+.data-banner h2{
+  font-size:clamp(30px,4vw,58px);
+  font-weight:800;letter-spacing:-2px;line-height:1.05;
+  max-width:800px;margin:0 auto 20px;
+}
+.data-banner h2 .accent{color:var(--accent)}
+.data-banner p{
+  font-size:17px;color:var(--muted);
+  max-width:660px;margin:0 auto 48px;
+  line-height:1.85;
+}
+.data-pillars{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;z-index:1}
+.data-pillar{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,95,31,0.18);
+  border-radius:12px;padding:14px 22px;
+  display:flex;align-items:center;gap:10px;
+  font-size:14px;font-weight:600;
+  transition:background 0.3s,border-color 0.3s,transform 0.3s;
+}
+.data-pillar:hover{background:rgba(255,95,31,0.1);border-color:rgba(255,95,31,0.4);transform:translateY(-2px)}
+.data-pillar span{font-size:18px}
+
+/* ---- LOGOS ---- */
+.logos-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:36px;font-weight:600;text-align:center}
+.logo-row{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+.logo-row img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:0.3;object-fit:contain;transition:opacity 0.3s}
+.logo-row img:hover{opacity:0.7}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1100px){
+  .about-hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-kpi-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .intro-strip-inner{grid-template-columns:1fr;gap:40px}
+  .approach-grid{grid-template-columns:1fr}
+  .verticals-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .vision-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .hero-kpi-stack{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .data-pillars{gap:10px}
+  .data-pillar{font-size:13px;padding:12px 16px}
+  .logo-row{gap:24px}
+  .logo-row img{height:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" width="150" height="36">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-dropdown"><a href="solutions.html">Solutions</a>
+        <div class="dropdown-menu">
+          <a href="content-engine.html"><span>🎬</span> Content Engine</a>
+          <a href="performanceos.html"><span>🏭</span> PerformanceOS</a>
+          <a href="health-plus.html"><span>💚</span> Health+</a>
+        </div>
+      </li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta"><a href="contact.html" class="btn-primary">Let's Talk</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <div class="mob-sub">Solutions</div>
+  <a href="solutions.html" style="padding-left:28px">All Solutions</a>
+  <a href="content-engine.html" style="padding-left:28px">🎬 Content Engine</a>
+  <a href="performanceos.html" style="padding-left:28px">🏭 PerformanceOS</a>
+  <a href="health-plus.html" style="padding-left:28px">💚 Health+</a>
+  <div class="mob-divider"></div>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn-primary" style="margin-top:12px;justify-content:center">Let's Talk</a>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="hero-bg">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,f_auto,q_auto:good/v1778504306/Employee_working_in_factory_cropped_wir5ws.png">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1400,f_auto,q_auto:good/v1778504306/Employee_working_in_factory_cropped_wir5ws.png" alt="" role="presentation" fetchpriority="high" decoding="sync" width="1400" height="933">
+    </picture>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-inner about-hero-inner">
+      <div>
+        <div class="hero-eyebrow"><span class="dot"></span>About Catalysto</div>
+        <h1 class="hero-title">Smarter. Faster.<br><span class="accent">Healthier.</span></h1>
+        <p class="hero-desc">We help manufacturing companies build operational systems that improve visibility, workforce performance and industrial communication — through structured, practical and data-driven implementation.</p>
+        <div class="hero-btns">
+          <a href="solutions.html" class="btn-primary">Explore Our Solutions</a>
+          <a href="contact.html" class="btn-secondary">Work With Us</a>
+        </div>
+      </div>
+      <div class="hero-kpi-stack">
+        <div class="kpi-card reveal delay-1">
+          <div class="kpi-icon">🏭</div>
+          <div class="kpi-text"><div class="kpi-value">54+</div><div class="kpi-label">Factories Collaborated With</div></div>
+        </div>
+        <div class="kpi-card reveal delay-2">
+          <div class="kpi-icon">📦</div>
+          <div class="kpi-text"><div class="kpi-value">250+</div><div class="kpi-label">Projects Delivered</div></div>
+        </div>
+        <div class="kpi-card reveal delay-3">
+          <div class="kpi-icon">👥</div>
+          <div class="kpi-text"><div class="kpi-value">1,200+</div><div class="kpi-label">Workforce Impacted</div></div>
+        </div>
+        <div class="kpi-card reveal delay-4">
+          <div class="kpi-icon">📅</div>
+          <div class="kpi-text"><div class="kpi-value">10+</div><div class="kpi-label">Years In Manufacturing</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INTRO STRIP — Who We Are
+============================================================ -->
+<div class="intro-strip">
+  <div class="container">
+    <div class="intro-strip-inner">
+      <div class="intro-strip-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2>A manufacturing-focused<br>operational systems <span class="accent">company.</span></h2>
+        <p>Catalysto works with manufacturing businesses to build data-driven operational systems that simplify execution, improve workforce efficiency and create better operational clarity across factory ecosystems.</p>
+        <p>Modern factories operate in increasingly demanding environments where productivity, workforce consistency, operational visibility and communication directly influence business performance. We were built to address these challenges through structured, practical implementation — not generic consulting.</p>
+        <p>Rather than offering broad advisory services, we focus specifically on manufacturing operations where people, processes and operational systems must work together seamlessly.</p>
+      </div>
+      <div class="intro-strip-image reveal-right">
+        <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_900,f_auto,q_auto:good/v1778479494/Employee_working_in_factory_g9jvbw.png" alt="Manufacturing operations" loading="lazy" width="900" height="562">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     OUR APPROACH
+============================================================ -->
+<section>
+  <div class="container">
+    <div class="approach-panel">
+      <div class="section-label" style="justify-content:center;display:flex">Our Approach</div>
+      <h2 class="reveal">Systematic. <span class="accent">Practical.</span> Measurable.</h2>
+      <p class="sub reveal">We believe operational excellence is achieved when visibility, communication and workforce systems operate together. Our approach is built around five integrated principles.</p>
+      <div class="approach-grid">
+        <div class="approach-item reveal delay-1">
+          <div class="approach-icon">🏭</div>
+          <div class="approach-step">Principle 01</div>
+          <h3>Manufacturing Understanding</h3>
+          <p>Every engagement starts with a deep understanding of the factory environment — the people, the processes, the machines and the real operational pressures teams face every shift.</p>
+        </div>
+        <div class="approach-item reveal delay-2">
+          <div class="approach-icon">📊</div>
+          <div class="approach-step">Principle 02</div>
+          <h3>Data-Driven Visibility</h3>
+          <p>We convert fragmented factory data into structured, visible intelligence. Decisions should be driven by data — not instinct, assumptions or delayed reports.</p>
+        </div>
+        <div class="approach-item reveal delay-3">
+          <div class="approach-icon">👥</div>
+          <div class="approach-step">Principle 03</div>
+          <h3>Workforce Performance Systems</h3>
+          <p>The best operational systems fail without workforce adoption. We build systems that operators and supervisors actually use — intuitive, practical and designed for the factory floor.</p>
+        </div>
+        <div class="approach-item reveal delay-1">
+          <div class="approach-icon">📡</div>
+          <div class="approach-step">Principle 04</div>
+          <h3>Industrial Communication</h3>
+          <p>Clear communication across every layer of the organisation — from operator training to management reporting — is an operational asset. We build it as one.</p>
+        </div>
+        <div class="approach-item reveal delay-2">
+          <div class="approach-icon">⚙️</div>
+          <div class="approach-step">Principle 05</div>
+          <h3>Practical Implementation</h3>
+          <p>We don't deliver slide decks. We implement. Every system is deployed, tested and refined within real factory environments to ensure it works in practice, not just in theory.</p>
+        </div>
+        <div class="approach-item reveal delay-3">
+          <div class="approach-icon">📈</div>
+          <div class="approach-step">The Result</div>
+          <h3>Scalable, Lasting Systems</h3>
+          <p>Systems that are scalable, practical and aligned with real manufacturing environments — built to improve efficiency now and grow with the business over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THREE VERTICALS
+============================================================ -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-title reveal">
+      <div class="section-label" style="justify-content:center;display:flex">What We Do</div>
+      <h2>Three Integrated <span class="accent">Verticals</span></h2>
+      <p>Catalysto operates through three solution verticals — each addressing a distinct manufacturing performance challenge, and each designed to work even better together.</p>
+    </div>
+    <div class="verticals-grid">
+
+      <div class="vertical-card reveal delay-1">
+        <div class="vertical-card-img">
+          <picture>
+            <source media="(max-width:768px)" srcset="https://res.cloudinary.com/decyo8uhe/image/upload/w_500,h_280,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png">
+            <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_420,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="Content Engine" loading="lazy" width="800" height="420">
+          </picture>
+          <div class="vertical-card-img-fade"></div>
+          <div class="vertical-tag">01 — Content Engine</div>
+        </div>
+        <div class="vertical-body">
+          <h3>Content <span class="accent">Engine</span></h3>
+          <p>Industrial communication systems that improve workforce understanding, training effectiveness and manufacturing brand perception.</p>
+          <ul class="vertical-list">
+            <li>SOP Training Videos</li>
+            <li>Industrial Business Films</li>
+            <li>Employer Branding</li>
+            <li>Factory Communication Systems</li>
+            <li>Safety Communication</li>
+            <li>Process Documentation</li>
+          </ul>
+          <a href="content-engine.html" class="vertical-link">Explore Content Engine <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="vertical-card reveal delay-2">
+        <div class="vertical-card-img">
+          <picture>
+            <source media="(max-width:768px)" srcset="https://res.cloudinary.com/decyo8uhe/image/upload/w_500,h_280,c_fill,g_auto,f_auto,q_auto:good/v1778489740/Dashboard_bipsrv.png">
+            <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_420,c_fill,g_auto,f_auto,q_auto:good/v1778489740/Dashboard_bipsrv.png" alt="PerformanceOS" loading="lazy" width="800" height="420">
+          </picture>
+          <div class="vertical-card-img-fade"></div>
+          <div class="vertical-tag">02 — PerformanceOS</div>
+        </div>
+        <div class="vertical-body">
+          <h3>Performance<span class="accent">OS</span></h3>
+          <p>Operational visibility and workforce intelligence systems designed to improve execution and factory-level decision making through structured data.</p>
+          <ul class="vertical-list">
+            <li>Workforce Productivity Tracking</li>
+            <li>Shift Analytics</li>
+            <li>Operational Dashboards</li>
+            <li>SOP Digitisation</li>
+            <li>Machine Visibility Systems</li>
+            <li>Factory Intelligence Systems</li>
+          </ul>
+          <a href="performanceos.html" class="vertical-link">Explore PerformanceOS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="vertical-card reveal delay-3">
+        <div class="vertical-card-img">
+          <picture>
+            <source media="(max-width:768px)" srcset="https://res.cloudinary.com/decyo8uhe/image/upload/w_500,h_280,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png">
+            <img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,h_420,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Health+" loading="lazy" width="800" height="420">
+          </picture>
+          <div class="vertical-card-img-fade"></div>
+          <div class="vertical-tag">03 — Health+</div>
+        </div>
+        <div class="vertical-body">
+          <h3>Health<span class="accent">+</span></h3>
+          <p>Ergonomic and workforce sustainability systems focused on creating healthier, more productive and more resilient industrial environments.</p>
+          <ul class="vertical-list">
+            <li>Ergonomic Assessments</li>
+            <li>Workforce Wellbeing Systems</li>
+            <li>Fatigue Reduction Programs</li>
+            <li>Workstation Analysis</li>
+            <li>Movement Optimisation</li>
+            <li>Psychological Wellbeing Assessment</li>
+          </ul>
+          <a href="health-plus.html" class="vertical-link">Explore Health+ <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY WORK WITH CATALYSTO
+============================================================ -->
+<section>
+  <div class="container">
+    <div class="why-panel">
+      <div class="section-label" style="justify-content:center;display:flex">Why Catalysto</div>
+      <h2 class="reveal">Why Manufacturing Companies<br>Work With <span class="accent">Us</span></h2>
+      <p class="sub reveal">We don't offer generic solutions. We build systems specifically for manufacturing environments where precision, practicality and workforce alignment are non-negotiable.</p>
+      <div class="why-grid">
+        <div class="why-card reveal delay-1">
+          <div class="why-num">01</div>
+          <h4>Manufacturing-Focused Systems</h4>
+          <p>Everything we build is designed specifically for manufacturing environments — not adapted from generic business tools.</p>
+        </div>
+        <div class="why-card reveal delay-2">
+          <div class="why-num">02</div>
+          <h4>Practical Implementation Approach</h4>
+          <p>We implement and deploy, not just advise. Every system is tested and refined within real factory conditions before handover.</p>
+        </div>
+        <div class="why-card reveal delay-3">
+          <div class="why-num">03</div>
+          <h4>Workforce Performance Understanding</h4>
+          <p>We understand how operators, supervisors and managers think and work — and we build systems that fit how they actually operate.</p>
+        </div>
+        <div class="why-card reveal delay-1">
+          <div class="why-num">04</div>
+          <h4>Modern Industrial Communication</h4>
+          <p>We bring contemporary communication thinking into industrial environments — improving how factories train, brand and communicate at every level.</p>
+        </div>
+        <div class="why-card reveal delay-2">
+          <div class="why-num">05</div>
+          <h4>Structured Operational Thinking</h4>
+          <p>Our work is systematic and process-led. We analyse before we build, and we build with clear operational outcomes in mind.</p>
+        </div>
+        <div class="why-card reveal delay-3">
+          <div class="why-num">06</div>
+          <h4>Data-Driven Visibility Systems</h4>
+          <p>We convert operational complexity into clear, structured data — giving businesses the visibility they need to make faster and better decisions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DATA VISION BANNER
+============================================================ -->
+<section>
+  <div class="container">
+    <div class="data-banner reveal">
+      <div class="data-banner-eyebrow">Our Broader Vision</div>
+      <h2>Building Towards a<br><span class="accent">Data-Centric</span> Manufacturing Future</h2>
+      <p>Our broader vision is to become a data-centric organisation — one that helps manufacturing businesses transform raw operational data into structured intelligence that drives every decision, every shift, every day.</p>
+      <div class="data-pillars">
+        <div class="data-pillar"><span>📊</span> Operational Data Systems</div>
+        <div class="data-pillar"><span>🔄</span> Real-Time Factory Intelligence</div>
+        <div class="data-pillar"><span>🧠</span> Predictive Workforce Analytics</div>
+        <div class="data-pillar"><span>📡</span> Connected Factory Ecosystems</div>
+        <div class="data-pillar"><span>📈</span> Performance Benchmarking</div>
+        <div class="data-pillar"><span>⚙️</span> Continuous Improvement Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VISION & MISSION
+============================================================ -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="vision-grid">
+      <div class="vision-card dark reveal-left">
+        <div class="vision-label">Our Vision</div>
+        <h2>To build smarter, faster and healthier manufacturing ecosystems through <span class="accent">data-centric</span> operational systems.</h2>
+        <p>We see a future where every factory operates with complete visibility — where data flows seamlessly from the shop floor to the boardroom, and where decisions are driven by intelligence rather than assumption.</p>
+      </div>
+      <div class="vision-card accent-card reveal-right">
+        <div class="vision-label">Our Mission</div>
+        <h2>Practical systems that deliver <span class="accent">real results</span> in real factories.</h2>
+        <p>Catalysto helps manufacturing companies improve workforce performance, operational visibility and industrial communication through practical systems designed for real factory environments — implemented with precision, measured with data and built to last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LOGO STRIP
+============================================================ -->
+<section style="padding-top:0">
+  <div class="container">
+    <p class="logos-label">Trusted by forward-thinking manufacturing companies</p>
+    <div class="logo-row">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481321/Doosan_Logo_nkuhpe.png" alt="Doosan" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481319/logo_vbqeki.webp" alt="AceMicromatic" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778480686/Nichrome_Logo-01_vtllau.png" alt="Nichrome" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481319/bauer-logo_xp8cyn.png" alt="Bauer" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481318/ion-logo_ct1u9e.webp" alt="IonExchange" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778490704/45b548e7-8263-43ff-82c2-22368084f7ca_small_baisgj.jpg" alt="Sparkonix" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481318/Logo_ebxoew.png" alt="Minilec" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481318/ICA_India_Logo_Copper_RGB_dnutb8.png" alt="ICA India" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481318/bfw-logo_cds0wd.webp" alt="BFW" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481318/logo_tlq941.svg" alt="Electronica" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778490400/Magic_Bus_Logo_oeccdh.png" alt="MagicBus" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778490876/cotmac_electronics_pvt_ltd___india_logo_o4ybjx.jpg" alt="Cotmac" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778481319/seibu_logo_jgdtl1.png" alt="Seibu" loading="lazy" height="32" width="auto">
+      <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_72,f_auto,q_auto:good/v1778503499/Fine_Handling_Logo_White_lnvd6v.png" alt="FineHandling" loading="lazy" height="32" width="auto">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+============================================================ -->
+<section>
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div>
+        <h2>Ready to build smarter<br>operational <span class="accent">systems?</span></h2>
+        <p>Let's talk about your factory's specific challenges and how Catalysto can help you build better visibility, performance and communication systems.</p>
+      </div>
+      <a href="contact.html" class="btn-primary" style="font-size:17px;padding:18px 36px;flex-shrink:0">Let's Talk →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_108,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" loading="lazy" height="40" width="auto">
+        <p>Operational systems for modern manufacturing businesses. Smarter. Faster. Healthier.</p>
+      </div>
+      <div class="footer-col"><h5>Solutions</h5><a href="content-engine.html">Content Engine</a><a href="performanceos.html">PerformanceOS</a><a href="health-plus.html">Health+</a></div>
+      <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="solutions.html">All Solutions</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h5>Contact</h5><a href="https://api.whatsapp.com/send?phone=918275788875" target="_blank" rel="noopener">+91 8275 788 875</a><a href="mailto:grow@catalysto.in">grow@catalysto.in</a><a href="#">Pune, India</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Catalysto. All Rights Reserved.</span><span>Smarter. Faster. Healthier.</span></div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

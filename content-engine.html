@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Content Engine | Catalysto</title>
+<meta name="description" content="SOP videos, industrial films, workforce training systems and operational communication infrastructure designed for manufacturing businesses."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+<link rel="stylesheet" href="shared.css">
+<style>
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.intro-img{border-radius:24px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;background:var(--bg2)}
+.intro-img img{width:100%;height:100%;object-fit:cover}
+.intro-text h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:20px}
+.intro-text h2 .accent{color:var(--accent)}
+.intro-text p{color:var(--muted);line-height:1.9;margin-bottom:28px}
+.intro-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.intro-point{background:rgba(255,95,31,0.08);border:1px solid rgba(255,95,31,0.18);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--text)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform 0.3s,border-color 0.3s}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(255,95,31,0.25)}
+.svc-img{height:180px;background:var(--bg2);overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8);transition:transform 0.5s,filter 0.4s}
+.svc-card:hover .svc-img img{transform:scale(1.05);filter:brightness(1)}
+.svc-body{padding:24px}
+.svc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:10px}
+.svc-body h3{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-0.5px}
+.svc-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px}
+.svc-body ul{list-style:none}
+.svc-body ul li{font-size:13px;color:#C8D4DE;padding:4px 0 4px 16px;position:relative}
+.svc-body ul li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.3s,transform 0.3s}
+.case-card:hover{border-color:rgba(255,95,31,0.25);transform:translateY(-4px)}
+.case-card h3{font-size:17px;font-weight:700;margin-bottom:12px;line-height:1.4}
+.case-card p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.case-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.process-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;text-align:center;transition:border-color 0.3s}
+.process-card:hover{border-color:rgba(255,95,31,0.25)}
+.process-num{font-size:40px;font-weight:800;color:rgba(255,95,31,0.2);line-height:1;margin-bottom:14px}
+.process-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.process-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px;transition:border-color 0.3s,transform 0.3s}
+.pkg-card:hover{transform:translateY(-4px)}
+.pkg-card.featured{border-color:rgba(255,95,31,0.4);background:linear-gradient(160deg,#1a2535,#0f1a28);position:relative}
+.pkg-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1px}
+.pkg-title{font-size:18px;font-weight:800;margin-bottom:10px}
+.pkg-card p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.pkg-price{font-size:36px;font-weight:800;color:var(--accent);margin-bottom:20px;line-height:1}
+.pkg-price span{font-size:14px;color:var(--muted);font-weight:500}
+.pkg-card ul{list-style:none}
+.pkg-card ul li{font-size:13px;color:#C8D4DE;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:8px}
+.pkg-card ul li::before{content:'✓';color:var(--accent);font-weight:700;font-size:12px}
+.pkg-card ul li:last-child{border-bottom:none}
+.video-panel{background:var(--card);border:1px solid var(--border);border-radius:32px;padding:clamp(32px,5vw,72px)}
+.video-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:48px}
+.video-header h2{font-size:clamp(24px,3vw,44px);font-weight:800;letter-spacing:-2px;line-height:1.05}
+.video-header h2 .accent{color:var(--accent)}
+.video-header p{font-size:15px;color:var(--muted);line-height:1.85}
+@media(max-width:1000px){.intro-grid,.video-header{grid-template-columns:1fr;gap:36px}.services-grid,.case-grid,.process-grid,.package-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.intro-points{grid-template-columns:1fr}}
+</style>
+</head><body>
+<nav class="navbar"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" width="150" height="36"></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li class="nav-dropdown"><a href="solutions.html" class="active">Solutions</a><div class="dropdown-menu"><a href="content-engine.html" class="active"><span>🎬</span> Content Engine</a><a href="performanceos.html"><span>🏭</span> PerformanceOS</a><a href="health-plus.html"><span>💚</span> Health+</a></div></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="nav-cta"><a href="contact.html" class="btn-primary">Let's Talk</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><div class="mob-sub">Solutions</div><a href="solutions.html" style="padding-left:28px">All Solutions</a><a href="content-engine.html" style="padding-left:28px">🎬 Content Engine</a><a href="performanceos.html" style="padding-left:28px">🏭 PerformanceOS</a><a href="health-plus.html" style="padding-left:28px">💚 Health+</a><div class="mob-divider"></div><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-primary" style="margin-top:12px;justify-content:center">Let's Talk</a></div>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1920,f_auto,q_auto:good/v1778484322/business-film-camera_hxprzd.jpg" alt="" role="presentation" fetchpriority="high" decoding="sync" width="1920" height="1080"></div>
+  <div class="hero-overlay"></div>
+  <div class="container"><div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>Content Engine</div>
+    <h1 class="hero-title">Industrial Communication<br>Systems For Modern <span class="accent">Factories</span></h1>
+    <p class="hero-desc">SOP videos, industrial films, workforce training systems and operational communication infrastructure designed specifically for manufacturing businesses.</p>
+    <div class="hero-btns"><a href="contact.html" class="btn-primary">Schedule A Discussion</a><a href="#work" class="btn-secondary">See Our Work</a></div>
+  </div></div>
+</section>
+
+<section><div class="container"><div class="intro-grid">
+  <div class="intro-img reveal-left"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="Industrial Communication" loading="lazy" width="800" height="600"></div>
+  <div class="intro-text reveal-right"><div class="section-label">Our Approach</div><h2>We don't create videos.<br>We build communication <span class="accent">systems.</span></h2><p>Content Engine helps manufacturing companies simplify training, standardise processes and improve operational communication through scalable visual systems that work across every department and shift.</p><div class="intro-points"><div class="intro-point">Faster Workforce Training</div><div class="intro-point">SOP Standardisation</div><div class="intro-point">Better Audit Readiness</div><div class="intro-point">Reduced Communication Gaps</div></div></div>
+</div></div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>What We <span class="accent">Offer</span></h2><p>Communication systems designed around real factory challenges.</p></div>
+  <div class="services-grid">
+    <div class="svc-card reveal delay-1"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="SOP Videos" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">01</div><h3>SOP & Process Videos</h3><p>Visual SOP systems that simplify training and improve process consistency across every operator and shift.</p><ul><li>Machine SOP Videos</li><li>Inspection Procedures</li><li>Operator Training</li><li>QR Training Systems</li></ul></div></div>
+    <div class="svc-card reveal delay-2"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778484322/business-film-camera_hxprzd.jpg" alt="Business Films" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">02</div><h3>Industrial Business Films</h3><p>Strategic industrial storytelling designed for manufacturing brands to communicate capability and culture.</p><ul><li>Company Films</li><li>Plant Walkthroughs</li><li>Capability Videos</li><li>Trade Show Films</li></ul></div></div>
+    <div class="svc-card reveal delay-3"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Safety Communication" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">03</div><h3>Safety Communication</h3><p>Improve workforce awareness through visual safety systems that actually engage operators.</p><ul><li>Safety Inductions</li><li>EHS Communication</li><li>Behavioural Safety</li><li>Awareness Campaigns</li></ul></div></div>
+    <div class="svc-card reveal delay-4"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489740/Dashboard_bipsrv.png" alt="Employer Branding" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">04</div><h3>Employer Branding</h3><p>Help manufacturing businesses attract modern industrial talent with authentic workplace storytelling.</p><ul><li>Recruitment Campaigns</li><li>Culture Videos</li><li>Hiring Content</li><li>Workplace Storytelling</li></ul></div></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="container">
+  <div class="video-panel reveal">
+    <div class="video-header"><div><div class="section-label">See It Work</div><h2>Training Content That<br>Works On The <span class="accent">Factory Floor</span></h2></div><p>Wrong handling methods are one of the leading causes of equipment failure in manufacturing. This training video was built to standardise correct procedures — reducing field service calls and improving operator confidence.</p></div>
+    <div class="video-facade" data-src="https://www.youtube.com/embed/Uw-AudD5-LM" data-title="Equipment Handling Training | Catalysto" role="button" aria-label="Play training video" tabindex="0"><img src="https://i.ytimg.com/vi/Uw-AudD5-LM/hqdefault.jpg" alt="Training video" loading="lazy" width="480" height="360"><div class="play-btn"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>Real Factory <span class="accent">Use Cases</span></h2></div>
+  <div class="case-grid">
+    <div class="case-card reveal delay-1"><h3>Automotive Components Manufacturer</h3><p>Built 42 SOP training videos and multilingual operator systems for faster onboarding and reduced supervisor dependency.</p><div class="case-label">Result</div><p>Improved process consistency and audit readiness.</p></div>
+    <div class="case-card reveal delay-2"><h3>Engineering Manufacturing Company</h3><p>Developed industrial business films and export communication assets for global presentations.</p><div class="case-label">Result</div><p>Better client engagement and stronger inbound enquiries.</p></div>
+    <div class="case-card reveal delay-3"><h3>Process Industry Plant</h3><p>Created safety induction systems and workforce communication visuals across 3 plant facilities.</p><div class="case-label">Result</div><p>Increased workforce participation and better training retention.</p></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>How It <span class="accent">Works</span></h2></div>
+  <div class="process-grid">
+    <div class="process-card reveal delay-1"><div class="process-num">01</div><h3>Plant Understanding</h3><p>We study operations, workforce structure and communication gaps on the factory floor.</p></div>
+    <div class="process-card reveal delay-2"><div class="process-num">02</div><h3>Content Architecture</h3><p>We identify communication priorities and design the training system structure.</p></div>
+    <div class="process-card reveal delay-3"><div class="process-num">03</div><h3>Production</h3><p>We create videos, documentation systems and digital training repositories.</p></div>
+    <div class="process-card reveal delay-4"><div class="process-num">04</div><h3>Deployment</h3><p>We help implement systems across departments, shifts and facilities.</p></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>Service <span class="accent">Packages</span></h2><p>Flexible systems for growing and enterprise manufacturing businesses.</p></div>
+  <div class="package-grid">
+    <div class="pkg-card reveal delay-1"><div class="pkg-title">Starter</div><p>Ideal for factories beginning digital communication systems.</p><div class="pkg-price">₹1.5L+ <span>/ project</span></div><ul><li>1 Industrial Film</li><li>5 SOP Videos</li><li>Photography Support</li><li>Basic Branding Assets</li></ul></div>
+    <div class="pkg-card featured reveal delay-2"><div class="pkg-title">Operational System</div><p>Designed for workforce training and SOP standardisation.</p><div class="pkg-price">₹4L+ <span>/ system</span></div><ul><li>SOP Video Library</li><li>Department Training</li><li>QR Access System</li><li>Safety Communication</li><li>Training Repository</li></ul></div>
+    <div class="pkg-card reveal delay-3"><div class="pkg-title">Enterprise</div><p>Complete industrial communication infrastructure for large operations.</p><div class="pkg-price">₹12L+ <span>/ year</span></div><ul><li>Company-wide Systems</li><li>Continuous Content Production</li><li>Employer Branding</li><li>Audit Support Content</li><li>Multi-location Deployment</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="container"><div class="cta-panel reveal"><div><h2>Build A Smarter Factory<br>Communication <span class="accent">System</span></h2><p>Whether you need SOP digitisation, industrial films or workforce training — Catalysto builds scalable communication infrastructure for manufacturing.</p></div><a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;flex-shrink:0">Schedule A Discussion →</a></div></div></section>
+
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_108,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" loading="lazy" height="40" width="auto"><p>Operational systems for modern manufacturing businesses.</p></div><div class="footer-col"><h5>Solutions</h5><a href="content-engine.html">Content Engine</a><a href="performanceos.html">PerformanceOS</a><a href="health-plus.html">Health+</a></div><div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="solutions.html">All Solutions</a><a href="contact.html">Contact</a></div><div class="footer-col"><h5>Contact</h5><a href="https://api.whatsapp.com/send?phone=918275788875" target="_blank" rel="noopener">+91 8275 788 875</a><a href="mailto:grow@catalysto.in">grow@catalysto.in</a><a href="#">Pune, India</a></div></div><div class="footer-bottom"><span>© 2026 Catalysto. All Rights Reserved.</span><span>Smarter. Faster. Healthier.</span></div></div></footer>
+<div class="modal" id="videoModal"><div class="modal-inner"><button class="modal-close" id="modalClose" aria-label="Close">✕</button><div class="modal-video"><iframe id="modalIframe" src="" title="Catalysto video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div></div>
+<script src="nav.js"></script>
+</body></html>

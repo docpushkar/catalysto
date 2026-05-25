@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Health+ | Catalysto</title>
+<meta name="description" content="Ergonomic and workforce sustainability systems that help factories create healthier, more productive work environments."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://res.cloudinary.com">
+<link rel="stylesheet" href="shared.css">
+<style>
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.intro-img{border-radius:24px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;background:var(--bg2)}
+.intro-img img{width:100%;height:100%;object-fit:cover}
+.intro-text h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:20px}
+.intro-text h2 .accent{color:var(--accent)}
+.intro-text p{color:var(--muted);line-height:1.9;margin-bottom:28px}
+.intro-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.intro-point{background:rgba(255,95,31,0.08);border:1px solid rgba(255,95,31,0.18);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--text)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform 0.3s,border-color 0.3s}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(255,95,31,0.25)}
+.svc-img{height:180px;background:var(--bg2);overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);transition:transform 0.5s,filter 0.4s}
+.svc-card:hover .svc-img img{transform:scale(1.05);filter:brightness(1)}
+.svc-body{padding:24px}
+.svc-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:10px}
+.svc-body h3{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-0.5px}
+.svc-body p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px}
+.svc-body ul{list-style:none}
+.svc-body ul li{font-size:13px;color:#C8D4DE;padding:4px 0 4px 16px;position:relative}
+.svc-body ul li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0.7}
+.impact-panel{display:grid;grid-template-columns:1fr 1fr;border-radius:28px;overflow:hidden;border:1px solid var(--border);min-height:480px}
+.impact-visual{position:relative;overflow:hidden}
+.impact-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75)}
+.impact-visual-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--bg2))}
+.impact-content{background:var(--card);padding:clamp(32px,4vw,60px);display:flex;flex-direction:column;justify-content:center}
+.impact-content h2{font-size:clamp(26px,3vw,42px);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:20px}
+.impact-content h2 .accent{color:var(--accent)}
+.impact-content p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:28px}
+.impact-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.imp-stat{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:18px}
+.imp-stat-val{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:4px}
+.imp-stat-lbl{font-size:12px;color:var(--muted);line-height:1.4}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.3s,transform 0.3s}
+.case-card:hover{border-color:rgba(255,95,31,0.25);transform:translateY(-4px)}
+.case-card h3{font-size:17px;font-weight:700;margin-bottom:12px;line-height:1.4}
+.case-card p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px}
+.case-label{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.process-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;text-align:center;transition:border-color 0.3s}
+.process-card:hover{border-color:rgba(255,95,31,0.25)}
+.process-num{font-size:40px;font-weight:800;color:rgba(255,95,31,0.2);line-height:1;margin-bottom:14px}
+.process-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.process-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.why-panel{background:var(--card);border:1px solid var(--border);border-radius:28px;padding:clamp(32px,4vw,64px)}
+.why-panel h2{font-size:clamp(28px,3vw,46px);font-weight:800;letter-spacing:-2px;margin-bottom:48px;text-align:center}
+.why-panel h2 .accent{color:var(--accent)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-item{border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;transition:border-color 0.3s,transform 0.3s;background:rgba(255,255,255,0.02)}
+.why-item:hover{border-color:rgba(255,95,31,0.25);transform:translateY(-4px)}
+.why-icon{font-size:28px;margin-bottom:14px}
+.why-item h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.why-item p{font-size:13px;color:var(--muted);line-height:1.7}
+@media(max-width:1000px){.intro-grid,.impact-panel{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.case-grid,.process-grid,.why-grid{grid-template-columns:1fr}.impact-visual{min-height:240px}.impact-visual-overlay{display:none}}
+@media(max-width:600px){.services-grid,.intro-points,.impact-stats{grid-template-columns:1fr}}
+</style>
+</head><body>
+<nav class="navbar"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_300,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" width="150" height="36"></a>
+  <ul class="nav-links"><li><a href="index.html">Home</a></li><li class="nav-dropdown"><a href="solutions.html" class="active">Solutions</a><div class="dropdown-menu"><a href="content-engine.html"><span>🎬</span> Content Engine</a><a href="performanceos.html"><span>🏭</span> PerformanceOS</a><a href="health-plus.html" class="active"><span>💚</span> Health+</a></div></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="nav-cta"><a href="contact.html" class="btn-primary">Let's Talk</a></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><div class="mob-sub">Solutions</div><a href="solutions.html" style="padding-left:28px">All Solutions</a><a href="content-engine.html" style="padding-left:28px">🎬 Content Engine</a><a href="performanceos.html" style="padding-left:28px">🏭 PerformanceOS</a><a href="health-plus.html" style="padding-left:28px">💚 Health+</a><div class="mob-divider"></div><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="contact.html" class="btn-primary" style="margin-top:12px;justify-content:center">Let's Talk</a></div>
+
+<section class="hero">
+  <div class="hero-bg"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_1920,f_auto,q_auto:good/v1778484322/ergonomic-health_fv1v1o.jpg" alt="" role="presentation" fetchpriority="high" decoding="sync" width="1920" height="1080"></div>
+  <div class="hero-overlay"></div>
+  <div class="container"><div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>Health+</div>
+    <h1 class="hero-title">Healthier Employees Build<br><span class="accent">Stronger</span> Factories</h1>
+    <p class="hero-desc">Health+ helps manufacturing companies improve workforce wellbeing, ergonomic efficiency and resilience through practical industrial health systems designed for factory environments.</p>
+    <div class="hero-btns"><a href="contact.html" class="btn-primary">Schedule Assessment</a><a href="#services" class="btn-secondary">Explore Services</a></div>
+  </div></div>
+</section>
+
+<section><div class="container"><div class="intro-grid">
+  <div class="intro-img reveal-left"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_800,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Workforce health" loading="lazy" width="800" height="600"></div>
+  <div class="intro-text reveal-right"><div class="section-label">Our Approach</div><h2>Healthy workers aren't just<br>happier — they're more <span class="accent">productive.</span></h2><p>Health+ treats workforce wellbeing as an operational asset, not a checkbox. We build ergonomic and sustainability systems that reduce fatigue, prevent injury and improve output — without disrupting production.</p><div class="intro-points"><div class="intro-point">Reduced Injury Risk</div><div class="intro-point">Lower Fatigue Levels</div><div class="intro-point">Higher Productivity</div><div class="intro-point">Better Retention</div></div></div>
+</div></div></section>
+
+<section id="services"><div class="container">
+  <div class="section-title reveal"><h2>What We <span class="accent">Offer</span></h2><p>Ergonomic and workforce health systems designed for industrial environments.</p></div>
+  <div class="services-grid">
+    <div class="svc-card reveal delay-1"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Ergonomic Assessments" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">01</div><h3>Ergonomic Assessments</h3><p>Systematic workstation and process evaluations to identify injury risk and fatigue-causing factors.</p><ul><li>Workstation Analysis</li><li>Posture & Movement Mapping</li><li>Risk Scoring</li><li>Priority Action Plans</li></ul></div></div>
+    <div class="svc-card reveal delay-2"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="Fatigue Reduction" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">02</div><h3>Fatigue Reduction Systems</h3><p>Structured micro-break programs and movement protocols that maintain alertness without cutting productivity.</p><ul><li>Shift-based Break Schedules</li><li>Micro-movement Programs</li><li>Alertness Protocols</li><li>Fatigue Monitoring</li></ul></div></div>
+    <div class="svc-card reveal delay-3"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778484322/ergonomic-health_fv1v1o.jpg" alt="Movement Optimisation" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">03</div><h3>Movement Optimisation</h3><p>Redesigning operator movement patterns to reduce strain and improve efficiency simultaneously.</p><ul><li>Motion Analysis</li><li>Layout Recommendations</li><li>Tool Placement Design</li><li>Operator Training</li></ul></div></div>
+    <div class="svc-card reveal delay-1"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489740/Dashboard_bipsrv.png" alt="Health Dashboards" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">04</div><h3>Workforce Health Dashboards</h3><p>Track workforce health indicators, absenteeism patterns and intervention effectiveness.</p><ul><li>Health KPI Tracking</li><li>Absenteeism Analysis</li><li>Intervention Metrics</li><li>Department Comparisons</li></ul></div></div>
+    <div class="svc-card reveal delay-2"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_worker_lh8myn.png" alt="Workstation Redesign" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">05</div><h3>Workstation Redesign</h3><p>Practical workstation modifications that improve comfort and reduce musculoskeletal strain.</p><ul><li>Height & Reach Analysis</li><li>Tool & Fixture Recommendations</li><li>Lighting & Environment</li><li>Comfort Improvements</li></ul></div></div>
+    <div class="svc-card reveal delay-3"><div class="svc-img"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_600,h_360,c_fill,g_auto,f_auto,q_auto:good/v1778489741/Happy_employee_zlfnat.png" alt="Operator Training" loading="lazy" width="600" height="360"></div><div class="svc-body"><div class="svc-num">06</div><h3>Operator Health Training</h3><p>Practical health and body-awareness training designed specifically for industrial workers.</p><ul><li>Safe Lifting Techniques</li><li>Stretch & Mobility Sessions</li><li>Body Awareness Programs</li><li>Self-care Guidance</li></ul></div></div>
+  </div>
+</div></section>
+
+<section><div class="container"><div class="impact-panel reveal">
+  <div class="impact-visual"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/w_900,f_auto,q_auto:good/v1778484322/ergonomic-health_fv1v1o.jpg" alt="Health impact" loading="lazy" width="900" height="700"><div class="impact-visual-overlay"></div></div>
+  <div class="impact-content"><div class="section-label">The Impact</div><h2>The Numbers Behind<br>Healthier <span class="accent">Factories</span></h2><p>Ergonomic improvements and workforce health systems don't just benefit people — they deliver measurable operational gains that show up directly on the factory floor.</p><div class="impact-stats"><div class="imp-stat"><div class="imp-stat-val">-34%</div><div class="imp-stat-lbl">Average reduction in musculoskeletal complaints</div></div><div class="imp-stat"><div class="imp-stat-val">+22%</div><div class="imp-stat-lbl">Improvement in operator sustained output</div></div><div class="imp-stat"><div class="imp-stat-val">-28%</div><div class="imp-stat-lbl">Reduction in health-related absenteeism</div></div><div class="imp-stat"><div class="imp-stat-val">+18%</div><div class="imp-stat-lbl">Increase in operator reported wellbeing score</div></div></div></div>
+</div></div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>Real Factory <span class="accent">Use Cases</span></h2></div>
+  <div class="case-grid">
+    <div class="case-card reveal delay-1"><h3>Automotive Assembly Plant</h3><p>Conducted ergonomic assessments across 8 assembly lines and redesigned 14 high-risk workstations.</p><div class="case-label">Result</div><p>34% reduction in musculoskeletal complaints within 6 months.</p></div>
+    <div class="case-card reveal delay-2"><h3>Packaging Manufacturing Unit</h3><p>Implemented fatigue reduction protocols and shift-based micro-break systems for 3 production shifts.</p><div class="case-label">Result</div><p>Improved end-of-shift alertness and reduced error rates.</p></div>
+    <div class="case-card reveal delay-3"><h3>Engineering Components Factory</h3><p>Operator health training and movement optimisation program across the machine shop and assembly area.</p><div class="case-label">Result</div><p>Measurable improvement in operator comfort scores and output consistency.</p></div>
+  </div>
+</div></section>
+
+<section><div class="container">
+  <div class="section-title reveal"><h2>How It <span class="accent">Works</span></h2></div>
+  <div class="process-grid">
+    <div class="process-card reveal delay-1"><div class="process-num">01</div><h3>Health Assessment</h3><p>We observe and evaluate workstations, movements and workforce health patterns on the floor.</p></div>
+    <div class="process-card reveal delay-2"><div class="process-num">02</div><h3>Risk Analysis</h3><p>We identify high-priority ergonomic risks and fatigue factors by department and role.</p></div>
+    <div class="process-card reveal delay-3"><div class="process-num">03</div><h3>System Design</h3><p>We build a tailored intervention plan including workstation changes, protocols and training.</p></div>
+    <div class="process-card reveal delay-4"><div class="process-num">04</div><h3>Implementation & Tracking</h3><p>We roll out changes, train operators and track health KPIs over time.</p></div>
+  </div>
+</div></section>
+
+<section><div class="container"><div class="why-panel"><div class="section-label" style="justify-content:center;display:flex">Why Health+</div><h2>Why Factories Choose <span class="accent">Health+</span></h2><div class="why-grid"><div class="why-item reveal delay-1"><div class="why-icon">🏭</div><h3>Factory-First Approach</h3><p>Not generic wellness programs. Systems designed specifically for industrial environments and shift workers.</p></div><div class="why-item reveal delay-2"><div class="why-icon">📊</div><h3>Measurable Outcomes</h3><p>Every intervention is tracked against clear health and productivity KPIs you can show management.</p></div><div class="why-item reveal delay-3"><div class="why-icon">🤝</div><h3>Non-disruptive</h3><p>All programs are designed to fit within production schedules without cutting output or adding complexity.</p></div></div></div></div></section>
+
+<section><div class="container"><div class="cta-panel reveal"><div><h2>Build A Healthier<br><span class="accent">Factory Floor</span></h2><p>Start with a workforce health assessment and we'll identify the highest-impact interventions for your operation.</p></div><a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 32px;flex-shrink:0">Schedule Assessment →</a></div></div></section>
+
+<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="https://res.cloudinary.com/decyo8uhe/image/upload/h_108,f_auto,q_auto:good/v1778503889/Catalysto_Logo_Final_horizontal_cropped_hbf93r.png" alt="Catalysto" loading="lazy" height="40" width="auto"><p>Operational systems for modern manufacturing businesses.</p></div><div class="footer-col"><h5>Solutions</h5><a href="content-engine.html">Content Engine</a><a href="performanceos.html">PerformanceOS</a><a href="health-plus.html">Health+</a></div><div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="solutions.html">All Solutions</a><a href="contact.html">Contact</a></div><div class="footer-col"><h5>Contact</h5><a href="https://api.whatsapp.com/send?phone=918275788875" target="_blank" rel="noopener">+91 8275 788 875</a><a href="mailto:grow@catalysto.in">grow@catalysto.in</a><a href="#">Pune, India</a></div></div><div class="footer-bottom"><span>© 2026 Catalysto. All Rights Reserved.</span><span>Smarter. Faster. Healthier.</span></div></div></footer>
+<script src="nav.js"></script>
+</body></html>
